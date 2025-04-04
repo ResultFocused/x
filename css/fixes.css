@@ -1,0 +1,133 @@
+/* Additional fixes and optimizations for ResultFocused website */
+
+/* Fix for mobile navigation */
+@media (max-width: 768px) {
+  .navbar-links {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+  }
+  
+  .navbar-links li {
+    margin: 0.75rem 0;
+  }
+  
+  .navbar-links a {
+    display: block;
+    padding: 0.5rem;
+  }
+}
+
+/* Fix for service cards on small screens */
+@media (max-width: 576px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-card {
+    padding: 1.5rem;
+  }
+}
+
+/* Optimize animations for performance */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fix for image loading */
+.hero-logo {
+  max-width: 160%;
+  height: auto;
+}
+
+.footer-logo {
+  max-width: 12%;
+  height: auto;
+}
+
+/* Accessibility improvements */
+:focus {
+  outline: 2px solid var(--primary-purple);
+  outline-offset: 2px;
+}
+
+.navbar-toggle:focus {
+  outline: 2px solid var(--primary-purple);
+}
+
+/* Add print styles */
+@media print {
+  .navbar, .footer {
+    display: none;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .section {
+    padding: 1rem 0;
+    background: white !important;
+    color: black !important;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+  
+  .service-card {
+    break-inside: avoid;
+    background: white;
+    border: 1px solid #ddd;
+  }
+}
+
+/* Performance optimizations */
+.hero, .intro, .background, .services, .contact {
+  will-change: transform;
+}
+
+/* Fix for iOS Safari */
+input, textarea, button {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+/* Fix for Firefox */
+@-moz-document url-prefix() {
+  .service-card {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Fix for Edge */
+@supports (-ms-ime-align: auto) {
+  .navbar {
+    background-color: rgba(255, 255, 255, 1);
+  }
+}
+
+/* Fix for IE */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .navbar {
+    background-color: rgba(255, 255, 255, 1);
+  }
+  
+  .service-card {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+}
